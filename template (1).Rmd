@@ -1,21 +1,61 @@
 ---
-title: "Simple document"
-output: html_document
+title: "Data Import"
+output: github_document
 ---
 
-I'm an R Markdown document! 
-
-# Section 1
-
-Here's a **code chunk** that samples from 
-a _normal distribution_:
-
 ```{r}
-samp = rnorm(100)
-length(samp)
+library(tidyverse)
 ```
 
-# Section 2
+Let's import a dataset.
 
-I can take the mean of the sample, too!
-The mean is `r mean(samp)`.
+```{r}
+litters_df = 
+  read_csv("E:/DATA SCIENCE I/Class/data_wrangling_1/data_import_examples/FAS_litters.csv")
+```
+
+Look at your data!!
+
+```{r}
+names(litters_df)
+```
+
+Update the names in 'litters_df'.
+
+```{r}
+litters_df = 
+  janitor::clean_names(litters_df)
+```
+
+Look at the data.
+
+```{r}
+litters_df
+```
+
+Sometims skiming data is neat?
+
+```{r}
+skimr::skim(litters_df)
+```
+
+## Fix the missingness
+
+```{r}
+litters_df = 
+  read_csv("E:/DATA SCIENCE I/Class/data_wrangling_1/data_import_examples/FAS_litters.csv", na = c("NA", ".", ""))
+```
+
+```{r}
+pups_df =
+  read_csv("E:/DATA SCIENCE I/Class/data_wrangling_1/data_import_examples/FAS_pups.csv",
+           skip = 3,
+           na = c("NA", ".", "")
+  )
+
+pups_df = 
+  janitor::clean_names(pups_df)
+```
+
+
+
