@@ -1,0 +1,92 @@
+---
+title: "Data Manipulation"
+author: "Ruihan Ding"
+date: "2025-09-18"
+output: github_document
+---
+
+```{r}
+library(tidyverse)
+```
+
+Import the datasets.
+
+```{r}
+litters_df = 
+  read_csv("data_import_examples/FAS_litters.csv", na = c("NA", ".", ""))
+litters_df = 
+  janitor::clean_names(litters_df)
+
+pups_df =
+  read_csv(
+    "data_import_examples/FAS_pups.csv",
+    skip = 3,
+    na = c("NA", ".", "")
+  )
+pups_df = 
+  janitor::clean_names(pups_df)
+```
+
+## `select`
+
+`select` selects variables from my data frame.
+
+select specific variables
+
+```{r}
+select(litters_df, group, litter_number, gd0_weight)
+```
+
+select a range
+
+```{r}
+select(litters_df, group:gd_of_birth)
+```
+
+select by removal
+
+```{r}
+select(litters_df, -group)
+select(litters_df, -(group:gd_of_birth))
+```
+
+select by prefix
+
+```{r}
+select(litters_df, group, starts_with("gd"))
+```
+
+rearrange by selecting
+
+```{r}
+select(litters_df, starts_with("gd"), group)
+select(litters_df, litter_number, everything())
+```
+
+rename by selecting
+
+```{r}
+select(litters_df, GROUP = group, everything())
+rename(litters_df, GROUP = group)
+
+relocate(litters_df, litter_number)
+```
+
+what if I only select one variable?
+
+```{r}
+select(litters_df, group)
+
+pull(litters_df, group)
+
+litters_df$group
+```
+
+In the pups data, select the columns containing litter number, sex, and PD ears.
+
+```{r}
+
+```
+
+
+
