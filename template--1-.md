@@ -132,9 +132,10 @@ litters_df =
 
 ``` r
 pups_df =
-  read_csv("data_import_examples/FAS_pups.csv",
-           skip = 3,
-           na = c("NA", ".", "")
+  read_csv(
+    "data_import_examples/FAS_pups.csv",
+    skip = 3,
+    na = c("NA", ".", "")
   )
 ```
 
@@ -182,4 +183,10 @@ pulse_df =
 ``` r
 litters_df_base =
   read.csv("data_import_examples/FAS_litters.csv")
+```
+
+## What about data exporting?
+
+``` r
+write_csv(fotr_df, "data_import_examples/fotr_df.csv")
 ```

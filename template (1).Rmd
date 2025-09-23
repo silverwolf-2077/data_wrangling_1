@@ -48,11 +48,14 @@ litters_df =
   read_csv("data_import_examples/FAS_litters.csv", na = c("NA", ".", ""))
 ```
 
+Learning assessment 1
+
 ```{r}
 pups_df =
-  read_csv("data_import_examples/FAS_pups.csv",
-           skip = 3,
-           na = c("NA", ".", "")
+  read_csv(
+    "data_import_examples/FAS_pups.csv",
+    skip = 3,
+    na = c("NA", ".", "")
   )
 
 pups_df = 
@@ -91,6 +94,11 @@ litters_df_base =
   read.csv("data_import_examples/FAS_litters.csv")
 ```
 
+## What about data exporting?
+
+```{r}
+write_csv(fotr_df, "data_import_examples/fotr_df.csv")
+```
 
 
 
